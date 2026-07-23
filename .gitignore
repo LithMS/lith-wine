@@ -1,0 +1,14 @@
+# Machine-specific paths / notes
+AGENTS.local.md
+
+# Build inputs & outputs (never commit — these are large or reproducible)
+crossover-sources-*.tar.gz
+sources/
+build/
+install/
+bundle/
+*.zip
+wine-cx*/
+
+# macOS cruft
+.DS_Store

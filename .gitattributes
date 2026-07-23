@@ -1,0 +1,2 @@
+*.sh text eol=lf
+scripts/distversion.h text eol=lf
