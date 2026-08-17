@@ -4,10 +4,18 @@ Build recipe and source-availability record for the **Wine runtime that the Lith
 on macOS**, so Lith can run MapleStory 2 without the user installing CrossOver.
 
 This repository exists to satisfy the **LGPL** obligations that attach when we redistribute compiled
-Wine binaries (and their LGPL dependency libraries) in the public `LithMS/Lith-Artifacts` releases.
-It is the "complete corresponding source + build instructions" offer for those binaries. See
+Wine binaries (and their LGPL dependency libraries) to end users. It is the "complete corresponding
+source + build instructions" offer for those binaries. See
 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for the per-component license and upstream-source
 list.
+
+**Where the binaries actually reach users:** the runtime is *not* a `Lith-Artifacts` release asset.
+The launcher ships from the public `LithMS/Lith-Artifacts` releases, and on first macOS launch with
+the bundled-Wine backend it downloads the runtime zip from Cloudflare R2 (`r2.lith.cat`) and extracts
+it to `{userData}/wine/`. The pinned URL, version, and SHA256 live in `Lith-Launcher`'s
+`src/app/lib/macos-bundled-wine.ts`. Whenever that pin moves, the version built by these scripts must
+move with it — this repo is only a valid source offer while it describes the runtime users are
+actually running.
 
 > The Lith launcher itself is a separate program that only *invokes* Wine as a subprocess (the same
 > way it invokes `umu-run` on Linux). It is not a derivative work of Wine and is not covered by this
@@ -22,8 +30,8 @@ WhiskyWine 404s, Kegworks/Sikarugir engines stop at CrossOver 21), so we build i
 
 - **CrossOver source version:** `26.2.0`
 - **Source URL:** `https://media.codeweavers.com/pub/crossover/source/crossover-sources-26.2.0.tar.gz`
-  (CodeWeavers rotates old versions off their server; a mirror of the exact tarball we built from is
-  kept with each Lith-Artifacts release that ships this runtime.)
+  (CodeWeavers rotates old versions off their server, so the exact tarball each shipped runtime was
+  built from must be mirrored alongside the runtime zip on R2 — see THIRD-PARTY-NOTICES.md.)
 - **Target:** `x86_64` (runs under Rosetta 2 on Apple Silicon; the game client is x64 and Agarcium's
   MinHook is x86/x64-only — never build ARM64).
 - **Recipe origin:** adapted from

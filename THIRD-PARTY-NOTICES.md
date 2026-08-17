@@ -1,16 +1,22 @@
 # Third-party notices
 
-The macOS Wine runtime that the Lith launcher redistributes (in `LithMS/Lith-Artifacts` releases)
-bundles the following third-party components. This file is the required attribution + source-offer
-record. Full license texts are in [`LICENSES/`](LICENSES/).
+The macOS Wine runtime that the Lith launcher redistributes bundles the following third-party
+components. This file is the required attribution + source-offer record. Full license texts are in
+[`LICENSES/`](LICENSES/).
+
+The runtime is distributed as a zip on Cloudflare R2 (`r2.lith.cat`), fetched by the launcher on
+first macOS launch — not as a `LithMS/Lith-Artifacts` release asset. The launcher itself is what
+ships via those releases.
 
 ## Wine (the core)
 
 - **Component:** Wine, built from CodeWeavers CrossOver sources `26.2.0`.
 - **License:** LGPL-2.1-or-later (`LICENSES/LGPL-2.1.txt`).
 - **Source:** `https://media.codeweavers.com/pub/crossover/source/crossover-sources-26.2.0.tar.gz`,
-  built with the scripts in this repo. A mirror of the exact tarball is kept with each Lith-Artifacts
-  release that ships the runtime.
+  built with the scripts in this repo.
+- **Required at release time:** CodeWeavers rotates old versions off their server, so the exact
+  tarball a shipped runtime was built from must be mirrored somewhere we control (alongside the
+  runtime zip on R2) and linked here. An upstream URL that 404s is not a source offer.
 - **Obligation met by:** publishing the complete corresponding source (the CrossOver tarball) + the
   build scripts here; Wine is invoked as a separate process, satisfying the LGPL relink allowance.
 
