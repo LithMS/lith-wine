@@ -39,7 +39,7 @@ license list are in `README.md` and `THIRD-PARTY-NOTICES.md` — read those befo
 
 Part of the Lith multi-repo workspace. When a task spans repos, read `AGENTS.local.md` (gitignored)
 for this machine's sibling checkout paths; the workspace root it names has the full system map in its
-`AGENTS.md`. Related repos: `Lith-Launcher` (consumes this runtime, B3 integration), the master port
-doc `macos-linux-port.md`, and the B1 write-up `prompts/macos-bundleable-wine-b1.md` at the workspace
-root. If `AGENTS.local.md` is missing, ask the user for the paths rather than guessing, and offer to
-create it.
+`AGENTS.md`. Related: `Lith-Launcher` consumes this runtime, and its `docs/macos.md` covers the
+bundled-Wine backend. The open licensing work, missing `LICENSES/` texts included, is tracked in
+LithMS/Lith-Launcher#69. If `AGENTS.local.md` is missing, ask the user for the paths rather than
+guessing, and offer to create it.
